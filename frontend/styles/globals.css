@@ -1,0 +1,345 @@
+/* frontend/styles/globals.css */
+
+/* Existing styles... */
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4; /* Light gray background */
+  }
+  
+  h1 {
+    text-align: center;
+    color: #333; /* Dark gray color for the heading */
+    margin-top: 20px; /* Space above the heading */
+  }
+  
+  /* Styles for the login form */
+  .login-container {
+    max-width: 400px; /* Maximum width for the form */
+    margin: 50px auto; /* Center the form horizontally and add space above */
+    padding: 20px; /* Padding inside the form */
+    background-color: white; /* White background for the form */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  }
+  
+  .login-container input {
+    width: 100%; /* Full width for input fields */
+    padding: 10px; /* Padding inside input fields */
+    margin: 10px 0; /* Space between input fields */
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 4px; /* Rounded corners for input fields */
+  }
+  
+  .login-container button {
+    width: 100%; /* Full width for the button */
+    padding: 10px; /* Padding inside the button */
+    background-color: #0070f3; /* Blue background for the button */
+    color: white; /* White text color */
+    border: none; /* Remove border */
+    border-radius: 4px; /* Rounded corners for the button */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+  }
+  
+  .login-container button:hover {
+    background-color: #005bb5; /* Darker blue on hover */
+  }
+
+
+  /* home page css */
+
+  .register-container {
+    max-width: 400px; /* Maximum width for the form */
+    margin: 50px auto; /* Center the form horizontally and add space above */
+    padding: 20px; /* Padding inside the form */
+    background-color: white; /* White background for the form */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  }
+  
+  .register-container input {
+    width: 100%; /* Full width for input fields */
+    padding: 10px; /* Padding inside input fields */
+    margin: 10px 0; /* Space between input fields */
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 4px; /* Rounded corners for input fields */
+  }
+  
+  .register-container button {
+    width: 100%; /* Full width for the button */
+    padding: 10px; /* Padding inside the button */
+    background-color: #0070f3; /* Blue background for the button */
+    color: white; /* White text color */
+    border: none; /* Remove border */
+    border-radius: 4px; /* Rounded corners for the button */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+  }
+  
+  .register-container button:hover {
+    background-color: #005bb5; /* Darker blue on hover */
+  }
+
+  /* for home */
+
+  .home-container {
+    text-align: center; /* Center text in the container */
+    background-color: #f4f4f4; /* Light gray background */
+    padding: 20px; /* Padding around the container */
+    min-height: 100vh; /* Full height of the viewport */
+  }
+  
+  .home-container h1 {
+    color: #333; /* Dark gray color for the heading */
+    margin-top: 20px; /* Space above the heading */
+  }
+  
+  .home-nav {
+    background-color: #0070f3; /* Blue background for the navigation */
+    padding: 1rem; /* Padding around the navigation */
+    border-radius: 8px; /* Rounded corners for the navigation */
+  }
+  
+  .home-nav ul {
+    list-style-type: none; /* Remove bullet points */
+    padding: 0; /* Remove default padding */
+    text-align: center; /* Center the navigation items */
+  }
+  
+  .home-nav ul li {
+    display: inline; /* Display items in a line */
+    margin-right: 20px; /* Space between items */
+  }
+  
+  .home-nav ul li a {
+    color: white; /* White text color for links */
+    text-decoration: none; /* Remove underline from links */
+    font-weight: bold; /* Bold text for links */
+    transition: color 0.3s; /* Smooth transition for hover effect */
+  }
+  
+  .home-nav ul li a:hover {
+    text-decoration: underline; /* Underline on hover */
+    color: #ffcc00; /* Change color on hover */
+  }
+
+  .product-list-container {
+    padding: 20px; /* Padding around the container */
+    background-color: #f4f4f4; /* Light gray background */
+  }
+  
+  .product-list-container h1 {
+    text-align: center; /* Center the heading */
+    color: #333; /* Dark gray color for the heading */
+  }
+  
+  .product-list {
+    display: flex; /* Use flexbox for layout */
+    flex-wrap: wrap; /* Allow items to wrap to the next line */
+    justify-content: center; /* Center items */
+    list-style-type: none; /* Remove bullet points */
+    padding: 0; /* Remove default padding */
+  }
+  
+  .product-list li {
+    background-color: white; /* White background for product cards */
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 8px; /* Rounded corners */
+    margin: 10px; /* Space between product cards */
+    padding: 15px; /* Padding inside product cards */
+    width: 200px; /* Fixed width for product cards */
+    text-align: center; /* Center text in product cards */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: transform 0.2s; /* Smooth transition for hover effect */
+  }
+  
+  .product-list li:hover {
+    transform: scale(1.05); /* Slightly enlarge on hover */
+  }
+  
+  .product-list button {
+    background-color: #0070f3; /* Blue background for buttons */
+    color: white; /* White text color */
+    border: none; /* Remove border */
+    border-radius: 4px; /* Rounded corners for buttons */
+    padding: 10px; /* Padding inside buttons */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+  }
+  
+  .product-list button:hover {
+    background-color: #005bb5; /* Darker blue on hover */
+  }
+  
+  /* Styles for the product detail page */
+  .product-detail-container {
+    padding: 20px; /* Padding around the container */
+    background-color: #f4f4f4; /* Light gray background */
+  }
+  
+  .product-detail-container h1 {
+    color: #333; /* Dark gray color for the heading */
+  }
+  
+  .product-detail-container button {
+    background-color: #0070f3; /* Blue background for buttons */
+    color: white; /* White text color */
+    border: none; /* Remove border */
+    border-radius: 4px; /* Rounded corners for buttons */
+    padding: 10px; /* Padding inside buttons */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+  }
+  
+  .product-detail-container button:hover {
+    background-color: #005bb5; /* Darker blue on hover */
+  }
+
+
+  .navbar {
+    background-color: #0070f3; /* Blue background for the navbar */
+    padding: 1rem; /* Padding around the navbar */
+  }
+  
+  .navbar-list {
+    list-style-type: none; /* Remove bullet points */
+    padding: 0; /* Remove default padding */
+    display: flex; /* Use flexbox for layout */
+    justify-content: center; /* Center the items */
+  }
+  
+  .navbar-list li {
+    margin-right: 20px; /* Space between items */
+  }
+  
+  .navbar-list li a,
+  .navbar-list li button {
+    color: white; /* White text color */
+    text-decoration: none; /* Remove underline from links */
+    font-weight: bold; /* Bold text for links */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: color 0.3s; /* Smooth transition for hover effect */
+  }
+  
+  .navbar-list li a:hover,
+  .navbar-list li button:hover {
+    color: #ffcc00; /* Change color on hover */
+  }
+
+  .cart-container {
+    padding: 20px; /* Padding around the container */
+    background-color: #f4f4f4; /* Light gray background */
+  }
+  
+  .cart-list {
+    list-style-type: none; /* Remove bullet points */
+    padding: 0; /* Remove default padding */
+  }
+  
+  .cart-item {
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Center items vertically */
+    background-color: white; /* White background for cart items */
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 8px; /* Rounded corners */
+    margin: 10px 0; /* Space between cart items */
+    padding: 15px; /* Padding inside cart items */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  }
+  
+  .cart-item-image {
+    width: 100px; /* Fixed width for product images */
+    height: auto; /* Maintain aspect ratio */
+    margin-right: 20px; /* Space between image and details */
+  }
+  
+  .cart-item-details {
+    flex-grow: 1; /* Allow details to take up remaining space */
+  }
+  
+  .quantity-controls {
+    display: flex; /* Use flexbox for quantity controls */
+    align-items: center; /* Center items vertically */
+  }
+  
+  .quantity-controls button {
+    background-color: #0070f3; /* Blue background for buttons */
+    color: white; /* White text color */
+    border: none; /* Remove border */
+    border-radius: 4px; /* Rounded corners for buttons */
+    padding: 5px 10px; /* Padding inside buttons */
+    cursor: pointer; /* Pointer cursor on hover */
+    margin: 0 5px; /* Space between buttons */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+  }
+  
+  .quantity-controls button:hover {
+    background-color: #005bb5; /* Darker blue on hover */
+  }
+  
+  .cart-item button {
+    background-color: #ff4d4d; /* Red background for remove button */
+    color: white; /* White text color */
+    border: none; /* Remove border */
+    border-radius: 4px; /* Rounded corners for buttons */
+    padding: 5px 10px; /* Padding inside buttons */
+    cursor: pointer; /* Pointer cursor on hover */
+    margin-top: 10px; /* Space above remove button */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+  }
+  
+  .cart-item button:hover {
+    background-color: #cc0000; /* Darker red on hover */
+  }
+
+  .checkout-button {
+    background-color: #28a745; /* Green background for checkout button */
+    color: white; /* White text color */
+    border: none; /* Remove border */
+    border-radius: 4px; /* Rounded corners for buttons */
+    padding: 10px 20px; /* Padding inside buttons */
+    cursor: pointer; /* Pointer cursor on hover */
+    margin-top: 20px; /* Space above checkout button */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+  }
+  
+  .checkout-button:hover {
+    background-color: #218838; /* Darker green on hover */
+  }
+
+  .search-input {
+    width: 50%;
+    flex-direction: row;
+    /* Full width for the input */
+    /* center the search box */
+    margin: 0 auto;
+    padding: 10px; /* Padding inside the input */
+    margin-bottom: 20px; /* Space below the input */
+    border: 1px solid #ccc; /* Light gray border */
+    border-radius: 4px; /* Rounded corners */
+    font-size: 16px; /* Font size */
+  }
+
+  .search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+
+  .Logout {
+    background-color: #ff4d4d; /* Red background for logout button */
+    color: white; /* White text color */
+    border: none; /* Remove border */
+    border-radius: 4px; /* Rounded corners for buttons */
+    padding: 10px 20px; /* Padding inside buttons */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: background-color 0.3s; /* Smooth transition for hover effect */
+  }
+
+  .Logout:hover {
+    background-color: #cc0000; /* Darker red on hover */
+  }
