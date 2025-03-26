@@ -13,7 +13,7 @@ const ProductsPage = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/products`, {
+        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL_PROD}/api/products`, {
           params: {
             search,
             category,
@@ -38,7 +38,7 @@ const ProductsPage = () => {
     }
 
     try {
-      await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/cart/add`, { productId, quantity: 1 }, {
+      await axios.post(`${process.env.NEXT_PUBLIC_API_URL_PROD}/api/cart/add`, { productId, quantity: 1 }, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

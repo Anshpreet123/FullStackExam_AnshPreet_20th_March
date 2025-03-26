@@ -13,7 +13,7 @@ const ProductDetail = ({ product }: { product: any }) => {
     console.log(product);
     
     try {
-      await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/cart/add`, { productId: product._id, quantity: 1 }, {
+      await axios.post(`${process.env.NEXT_PUBLIC_API_URL_PROD}/api/cart/add`, { productId: product._id, quantity: 1 }, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -37,7 +37,7 @@ const ProductDetail = ({ product }: { product: any }) => {
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { id } = context.params as { id: string };
-  const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/products/${id}`);
+  const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL_PROD}/api/products/${id}`);
   return {
     props: {
       product: response.data,
