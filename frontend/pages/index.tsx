@@ -2,7 +2,6 @@
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import '../styles/globals.css';
 
 const HomePage = () => {
   const [products, setProducts] = useState([]);
