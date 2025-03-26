@@ -8,7 +8,7 @@ const HomePage = () => {
 
   useEffect(() => {
     const fetchProducts = async () => {
-      const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL_PROD}/api/products`);
+      const response = await axios.get(`/api/products`);
       setProducts(response.data);
     };
     fetchProducts();
@@ -45,7 +45,7 @@ const addToCart = async (productId: string) => {
   }
 
   try {
-    await axios.post(`${process.env.NEXT_PUBLIC_API_URL_PROD}/api/cart/add`, { productId, quantity: 1 }, {
+    await axios.post(`/api/cart/add`, { productId, quantity: 1 }, {
       headers: {
         Authorization: `Bearer ${token}`,
       },

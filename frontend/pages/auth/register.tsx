@@ -12,7 +12,7 @@ const RegisterPage = () => {
   const handleRegister = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      await axios.post(`${process.env.NEXT_PUBLIC_API_URL_PROD}/api/auth/register`, { name, email, password });
+      await axios.post(`/api/auth/register`, { name, email, password });
       router.push('/auth/login'); // Redirect to login after successful registration
     } catch (error) {
       console.error("Registration error:", error);

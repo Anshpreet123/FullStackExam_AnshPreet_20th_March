@@ -17,7 +17,7 @@ const CartPage = () => {
       }
 
       try {
-        const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL_PROD}/api/cart`, { headers });
+        const response = await axios.get(`/api/cart`, { headers });
         setCart(response.data.items || []);
       } catch (error) {
         console.error("Error fetching cart:", error);
@@ -32,7 +32,7 @@ const CartPage = () => {
     if (!token) return;
 
     try {
-      await axios.delete(`${process.env.NEXT_PUBLIC_API_URL_PROD}/api/cart/remove/${productId}`, {
+      await axios.delete(`/api/cart/remove/${productId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -48,7 +48,7 @@ const CartPage = () => {
     if (!token) return;
 
     try {
-      await axios.post(`${process.env.NEXT_PUBLIC_API_URL_PROD}/api/cart/add`, { productId, quantity }, {
+      await axios.post(`/api/cart/add`, { productId, quantity }, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -74,7 +74,7 @@ const CartPage = () => {
     if (!token) return;
 
     try {
-      await axios.post(`${process.env.NEXT_PUBLIC_API_URL_PROD}/api/orders/checkout`, { items: cart }, {
+      await axios.post(`/api/orders/checkout`, { items: cart }, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

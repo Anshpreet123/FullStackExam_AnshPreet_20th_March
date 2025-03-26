@@ -18,7 +18,7 @@ const LoginPage = () => {
   const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
-      const response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL_PROD}/api/auth/login`, { email, password });
+      const response = await axios.post(`/api/auth/login`, { email, password });
       const { token } = response.data;
       localStorage.setItem('authToken', token);
       router.push('/'); // Redirect to home after login
