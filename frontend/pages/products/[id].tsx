@@ -1,8 +1,19 @@
 // frontend/pages/products/[id].tsx
 import { GetServerSideProps } from 'next';
-import axios from 'axios'; // Use axios directly like in login/signup
+import axios from 'axios';
+import { useRouter } from 'next/router';
 
 const ProductDetail = ({ product }: { product: any }) => {
+  const router = useRouter();
+
+  if (router.isFallback) {
+    return <div>Loading...</div>;
+  }
+
+  if (!product) {
+    return <div>Product not found</div>;
+  }
+
   const addToCart = async () => {
     try {
       const token = localStorage.getItem('token');
@@ -34,15 +45,17 @@ const ProductDetail = ({ product }: { product: any }) => {
 export const getServerSideProps: GetServerSideProps = async (context) => {
   try {
     const { id } = context.params as { id: string };
-    // Use direct URL in getServerSideProps
-    const response = await axios.get(`http://13.201.137.93:5000/api/products/${id}`);
     
-    if (!response.data) {
-      return {
-        notFound: true
-      };
-    }
+    // Create axios instance with base URL
+    const axiosInstance = axios.create({
+      baseURL: process.env.NEXT_PUBLIC_API_URL,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
 
+    const response = await axiosInstance.get(`/api/products/${id}`);
+    
     return {
       props: {
         product: response.data,
@@ -51,8 +64,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   } catch (error) {
     console.error('Error fetching product:', error);
     return {
-      notFound: true,
-      props: {} // Add empty props to satisfy TypeScript
+      props: {
+        product: null,
+      },
     };
   }
 };

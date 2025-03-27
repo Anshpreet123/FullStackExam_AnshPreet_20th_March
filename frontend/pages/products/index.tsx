@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import Link from 'next/link';
+import { GetServerSideProps } from 'next';
 
 const ProductsPage = () => {
   const [products, setProducts] = useState([]);
@@ -75,6 +76,36 @@ const ProductsPage = () => {
       </ul>
     </div>
   );
+};
+
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  try {
+    const { search = '', category = '', page = 1, limit = 10 } = context.query;
+    
+    const axiosInstance = axios.create({
+      baseURL: process.env.NEXT_PUBLIC_API_URL,
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    const response = await axiosInstance.get(`/api/products`, {
+      params: { search, category, page, limit }
+    });
+
+    return {
+      props: {
+        products: response.data,
+      },
+    };
+  } catch (error) {
+    console.error('Error fetching products:', error);
+    return {
+      props: {
+        products: [],
+      },
+    };
+  }
 };
 
 export default ProductsPage;
