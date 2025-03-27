@@ -1,74 +1,47 @@
 // frontend/pages/products/[id].tsx
-import { GetServerSideProps } from 'next';
-import axios from 'axios';
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+import api from '@/utils/axios';
+import { Product } from '@/types/product';
 
-const ProductDetail = ({ product }: { product: any }) => {
+const ProductDetail = () => {
   const router = useRouter();
+  const { id } = router.query;
+  const [product, setProduct] = useState<Product | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
-  if (router.isFallback) {
-    return <div>Loading...</div>;
-  }
+  useEffect(() => {
+    const fetchProduct = async () => {
+      if (!id) return;
+      
+      try {
+        setLoading(true);
+        const response = await api.get<Product>(`/api/products/${id}`);
+        setProduct(response.data);
+        setError(null);
+      } catch (error: any) {
+        console.error('Error fetching product:', error);
+        setError(error.message);
+      } finally {
+        setLoading(false);
+      }
+    };
 
-  if (!product) {
-    return <div>Product not found</div>;
-  }
+    fetchProduct();
+  }, [id]);
 
-  const addToCart = async () => {
-    try {
-      const token = localStorage.getItem('token');
-      await axios.post('/api/cart/add', 
-        { productId: product._id, quantity: 1 },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          }
-        }
-      );
-      alert("Product added to cart!");
-    } catch (error) {
-      console.error('Error adding to cart:', error);
-      alert("Failed to add product to cart");
-    }
-  };
+  if (loading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
+  if (!product) return <div>Product not found</div>;
 
   return (
     <div className="product-detail-container">
       <h1>{product.name}</h1>
       <p>{product.description}</p>
       <p>Price: ${product.price}</p>
-      <button onClick={addToCart}>Add to Cart</button>
     </div>
   );
-};
-
-export const getServerSideProps: GetServerSideProps = async (context) => {
-  try {
-    const { id } = context.params as { id: string };
-    
-    // Create axios instance with base URL
-    const axiosInstance = axios.create({
-      baseURL: process.env.NEXT_PUBLIC_API_URL,
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
-
-    const response = await axiosInstance.get(`/api/products/${id}`);
-    
-    return {
-      props: {
-        product: response.data,
-      },
-    };
-  } catch (error) {
-    console.error('Error fetching product:', error);
-    return {
-      props: {
-        product: null,
-      },
-    };
-  }
 };
 
 export default ProductDetail;
