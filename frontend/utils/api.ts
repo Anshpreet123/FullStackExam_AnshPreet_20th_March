@@ -1,7 +1,26 @@
 // frontend/utils/api.ts (Create a utility file for API calls)
 import axios from 'axios';
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL; // Ensure this is set in your .env file
+const isServer = typeof window === 'undefined';
+const BASE_URL = isServer ? 'http://13.201.137.93:5000' : '';
+
+export const api = axios.create({
+  baseURL: BASE_URL,
+  headers: {
+    'Content-Type': 'application/json',
+  },
+});
+
+// Add request interceptor to handle auth tokens
+api.interceptors.request.use((config) => {
+  if (!isServer) {
+    const token = localStorage.getItem('token');
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+  }
+  return config;
+});
 
 // Function to get the token from localStorage
 const getToken = () => {
@@ -12,7 +31,7 @@ const getToken = () => {
 export const addToCart = async (productId: string, quantity: number) => {
   const token = getToken();
   const response = await axios.post(
-    `${API_URL}/api/cart/add`,
+    `${BASE_URL}/api/cart/add`,
     { productId, quantity },
     {
       headers: {

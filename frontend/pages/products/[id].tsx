@@ -1,27 +1,23 @@
 // frontend/pages/products/[id].tsx
 import { GetServerSideProps } from 'next';
-import axios from 'axios';
+import axios from 'axios'; // Use axios directly like in login/signup
 
 const ProductDetail = ({ product }: { product: any }) => {
   const addToCart = async () => {
-    const token = localStorage.getItem('authToken');
-    if (!token) {
-      alert("You need to log in to add items to the cart.");
-      return;
-    }
-
-    console.log(product);
-    
     try {
-      await axios.post(`/api/cart/add`, { productId: product._id, quantity: 1 }, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const token = localStorage.getItem('token');
+      await axios.post('/api/cart/add', 
+        { productId: product._id, quantity: 1 },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          }
+        }
+      );
       alert("Product added to cart!");
-
     } catch (error) {
-      console.error("Error adding to cart:", error);
+      console.error('Error adding to cart:', error);
+      alert("Failed to add product to cart");
     }
   };
 
@@ -36,13 +32,29 @@ const ProductDetail = ({ product }: { product: any }) => {
 };
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const { id } = context.params as { id: string };
-  const response = await axios.get(`/api/products/${id}`);
-  return {
-    props: {
-      product: response.data,
-    },
-  };
+  try {
+    const { id } = context.params as { id: string };
+    // Use direct URL in getServerSideProps
+    const response = await axios.get(`http://13.201.137.93:5000/api/products/${id}`);
+    
+    if (!response.data) {
+      return {
+        notFound: true
+      };
+    }
+
+    return {
+      props: {
+        product: response.data,
+      },
+    };
+  } catch (error) {
+    console.error('Error fetching product:', error);
+    return {
+      notFound: true,
+      props: {} // Add empty props to satisfy TypeScript
+    };
+  }
 };
 
 export default ProductDetail;
