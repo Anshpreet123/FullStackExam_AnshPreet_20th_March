@@ -3,7 +3,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import axios from 'axios';
 
 // const API_URL = 'http://localhost:5000/api/auth'; // Adjust the URL as needed
-const API_URL = `${process.env.NEXT_PUBLIC_API_URL_PROD}/api/auth`; // Adjust the URL as needed
+const API_URL = `/api/auth`; // Adjust the URL as needed
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'POST') {

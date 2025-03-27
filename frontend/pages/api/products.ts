@@ -3,7 +3,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 import axios from 'axios';
 
 // const API_URL = 'http://localhost:5000/api/products';
-const API_URL = `${process.env.NEXT_PUBLIC_API_URL_PROD}/api/products`;
+const API_URL = `/api/products`;
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'GET') {
